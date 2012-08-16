@@ -192,7 +192,7 @@ MemcachedTransaction.prototype._exec = function (op, cb) {
 
 	function callback(err) {
 		if (err) {
-			console.error(JSON.stringify(err));
+			console.error('Membase commit error :', op.type, op.key, op.value, op.ttl || 0, JSON.stringify(err));
 		}
 
 		return cb();
@@ -231,7 +231,7 @@ MemcachedTransaction.prototype._exec = function (op, cb) {
 		console.error('Unknown operation type: ' + op.type);
 
 		if (cb) {
-			return cb();
+			return callback();
 		}
 
 		break;
