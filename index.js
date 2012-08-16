@@ -228,9 +228,12 @@ MemcachedTransaction.prototype._exec = function (op, cb) {
 		});
 		break;
 	default:
+		console.error('Unknown operation type: ' + op.type);
+
 		if (cb) {
-			callback('Unknown operation type: ' + op.type);
+			return cb();
 		}
+
 		break;
 	}
 };
